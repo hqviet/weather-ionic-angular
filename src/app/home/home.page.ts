@@ -29,22 +29,6 @@ export class HomePage implements OnInit {
           this.weather = (new Weather()).adapt(data);
           console.log(data);
         });
-        // this.weatherService.getCurrentWeather(
-        //     response.coords.latitude,
-        //     response.coords.longitude
-        //   ).subscribe(resp => {
-        //     this.weather = resp;
-        //   });
-        // this.weatherService.getCurrentWeatherNative(
-        //   response.coords.latitude,
-        //   response.coords.longitude,
-        //   success => {
-        //     this.weather = success;
-        //     console.log('Native', this.weather);
-        //   },
-        //   fail => {
-        //     console.log(fail);
-        //   });
       })
       .catch(error => {
         console.log('Error getting location', error);

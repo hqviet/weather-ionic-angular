@@ -1,6 +1,6 @@
-import { IForecast } from '../interfaces/forecast.interface';
+import { IAdapter } from '../interfaces/adapter.interface';
 
-export default class Forecast implements IForecast {
+export default class Forecast implements IAdapter<Forecast> {
     day: string;
     clouds: {};
     dt: number;
@@ -14,7 +14,7 @@ export default class Forecast implements IForecast {
     constructor() {}
 
     adapt(data: any) {
-        let tmp = new Forecast();
+        const tmp = new Forecast();
         tmp.day = data.dt_txt.split(' ')[0];
         tmp.dt = data.dt;
         tmp.dtTxt = data.dt_txt;
