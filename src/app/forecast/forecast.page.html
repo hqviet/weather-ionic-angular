@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>5 days forecast</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-select placeholder="Select One" (ionChange)="getForecastFilters($event)">
+      <ion-select-option *ngFor="let day of days" value="{{ day }}">{{ day }}</ion-select-option>
+    </ion-select>
+  </ion-card>
+  <div *ngFor="let fc of forcastResults">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>{{ getTimeOfDay(fc.dtTxt) }} {{ detectTimeOfDay(fc.sys.pod) }}</ion-card-subtitle>
+        <ion-item lines="none">
+          <label slot="start">{{ roundNumber(fc.main.temp) }} &deg;C</label>
+          <ion-img class="weather-icon" slot="start" [src]="getIconUrl(fc.weather[0].icon)"></ion-img>
+          <ion-label>{{ fc.weather[0].description }}</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label slot="start">Rain</ion-label>
+          <ion-label>{{ fc.rain ? fc.rain['3h'] + 'mm/3h'  : 'No rain' }}</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label slot="start">Humidity</ion-label>
+          <ion-label>{{ fc.main.humidity }} %</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label slot="start">Wind</ion-label>
+          <ion-label>{{ fc.wind.speed }} m/s</ion-label>
+        </ion-item>
+      </ion-card-header>
+    </ion-card>
+  </div>
+</ion-content>

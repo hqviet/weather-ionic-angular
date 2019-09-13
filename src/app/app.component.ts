@@ -17,10 +17,15 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'List',
+      title: '5 days forecast',
+      url: '/forecast',
+      icon: 'cloud'
+    },
+    {
+      title: 'Settings',
       url: '/list',
-      icon: 'list'
-    }
+      icon: 'settings'
+    },
   ];
 
   constructor(
